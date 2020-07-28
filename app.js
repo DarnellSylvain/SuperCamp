@@ -25,7 +25,7 @@ app.use(methodOverride("_method"));
 
 mongoose.set('useUnifiedTopology', true);
 // mongoose.connect("mongodb://localhost/super_camp", {useNewUrlParser:true})
-mongoose.connect("mongodb+srv://DarnellS:S1L2Y3vester@supercamp.j8bcq.mongodb.net/super_camp?retryWrites=true&w=majority", {useNewUrlParser:true})
+mongoose.connect("mongodb+srv://DarnellS:S1L2Y3vester@supercamp.j8bcq.mongodb.net/super_camp?retryWrites=true&w=majority", {useNewUrlParser:true, useCreateIndex: true})
     .then(() => console.log("Connected to DB"))
     .catch(err => console.log("Error!", err.message))
 
