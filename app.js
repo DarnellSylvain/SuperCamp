@@ -54,4 +54,5 @@ app.use("/", indexRoutes);
 app.use("/superheroes", superheroRoutes);
 app.use("/superheroes/:id/comments", commentRoutes);
 
-app.listen(3000, () => console.log("Server has started on port 3000"))
+var port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Server has started on port 3000"))
