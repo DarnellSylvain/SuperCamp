@@ -22,10 +22,11 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+console.log(process.env.DATABASEURL)
 
 mongoose.set('useUnifiedTopology', true);
 // mongoose.connect("mongodb://localhost/super_camp", {useNewUrlParser:true})
-mongoose.connect("mongodb+srv://DarnellS:S1L2Y3vester@supercamp.j8bcq.mongodb.net/super_camp?retryWrites=true&w=majority", {useNewUrlParser:true, useCreateIndex: true})
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser:true, useCreateIndex: true})
     .then(() => console.log("Connected to DB"))
     .catch(err => console.log("Error!", err.message))
 
@@ -59,4 +60,4 @@ app.use("/superheroes", superheroRoutes);
 app.use("/superheroes/:id/comments", commentRoutes);
 
 var port = process.env.PORT || 3000;
-app.listen(port, () => console.log("Server has started on port 3000"))
+app.listen(port, process.env.IP, () => console.log("Server has started on port 3000"))
